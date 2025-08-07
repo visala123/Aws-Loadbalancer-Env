@@ -21,7 +21,7 @@ data "aws_security_group" "lb_sg" {
   id = "sg-1234abcd"
 }
 
-module "eks_lb" {
+module "alb" {
   source      = "../../modules/lb"
   lb_name     = var.lb_name
   tg_name     = var.tg_name
