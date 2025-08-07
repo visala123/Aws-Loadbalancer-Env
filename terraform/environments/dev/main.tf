@@ -20,7 +20,7 @@ data "aws_security_group" "lb_sg" {
 }
 
 module "eks_lb" {
-  source      = "../../modules/eks"
+  source      = "../../modules/lb"
   lb_name     = var.lb_name
   tg_name     = var.tg_name
   vpc_id     = data.aws_vpc.selected.id
