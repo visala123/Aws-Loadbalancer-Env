@@ -1,6 +1,6 @@
 # Aws-Loadbalancer-Env
 
-This project provisions an AWS EKS Cluster using Terraform in a modular structure with CI/CD automation powered by GitHub Actions. It supports multi-environment deployments (dev, prod) and includes Infracost for cost estimation.
+This project provisions an AWS Application Loadbalancer with targer group and listener using Terraform in a modular structure with CI/CD automation powered by GitHub Actions. It supports multi-environment deployments (dev, prod) and includes Infracost for cost estimation.
 
  
 ## Prerequisites
@@ -93,33 +93,6 @@ Create
 
 Click Create security group.
 
-## Create key pair
-Go to EC2 Dashboard
-
-Search EC2 in the AWS Console search bar.
-
-Click EC2 service.
-
-Create Key Pair
-
-In the left menu, click Key Pairs under Network & Security.
-
-Click Create key pair.
-
-Key pair name: e.g., my-key
-
-Key pair type: RSA (recommended for compatibility)
-
-Private key file format:
-
-.pem (Linux/macOS)
-
-.ppk (Windows with PuTTY)
-
-Click Create key pair.
-
-Your private key file will be downloaded — store it securely (you won’t be able to download it again).
-
  ## Project Structure
 
 ```
@@ -136,7 +109,7 @@ terraform/
       variables.tf
       terraform.tfvars
   modules/
-    eks/
+    lb/
       main.tf
       outputs.tf
       variables.tf
@@ -153,16 +126,6 @@ VPC   =default vpc
 subnet_ids    = " "
 
 security_group_id = " "
-
-key_name       = " " 
-
-eks_cluster_role =" "
-
-eks_node_role =" "
-
-cluster_role_arn =" "
-
-node_role-arn =" "
 
 passed all these values as a data blocks.
 
@@ -252,7 +215,7 @@ Once approved, resources are deployed
 
 # Outputs
 
-cluster_name
+alb_dns_name
 
 ##  Cleanup
 ```terminal
@@ -268,6 +231,6 @@ terraform destroy
 ```
 
 # References
-AWS EKS Cluster - Terraform Docs
+AWS_loadbalancer - Terraform Docs
 
-https://registry.tf-registry-prod-use1.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster
+https://registry.tf-registry-prod-use1.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb
